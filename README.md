@@ -21,8 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-dac
-adc
-adc
-adc
+* ...adc

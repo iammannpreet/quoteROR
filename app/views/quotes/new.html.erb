@@ -1,12 +1,15 @@
-<h1>Add a New Quote</h1>
-<%= form_with model: @quote, local: true do |form| %>
-  <div>
-    <%= form.label :content, 'Quote' %><br>
-    <%= form.text_area :content %>
-  </div>
-  <div>
-    <%= form.submit 'Submit', class: 'btn' %>
-  </div>
-<% end %>
+<div class="min-h-screen flex items-center justify-center bg-gray-100 py-12">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">Add a New Quote</h1>
 
-<%= link_to 'Back to Quotes', root_path, class: 'btn' %>
+        <%= form_with model: @quote, local: true do |form| %>
+        <div class="mb-4">
+            <%= form.label :content, class: "block text-gray-700" %>
+            <%= form.text_area :content, rows: 3, placeholder: "Write your quote here...", class: "w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" %>
+        </div>
+        <%= form.submit 'Submit', class: "w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded" %>
+        <% end %>
+
+        <%= link_to '⬅️ Back to Quotes', root_path, class: "block text-center mt-4 text-indigo-600 hover:underline" %>
+    </div>
+</div>

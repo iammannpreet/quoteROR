@@ -1,12 +1,26 @@
-<h1>Top Quotes</h1>
-<%= link_to 'Add New Quote', new_quote_path, class: 'btn' %>
+<div class="min-h-screen bg-gradient-to-br from-purple-700 via-pink-500 to-red-400 flex flex-col items-center py-12">
+    <h1 class="text-5xl font-extrabold text-white mb-8 drop-shadow-lg animate__animated animate__fadeInDown">🔥 Epic Quotes Arena 🔥</h1>
 
-<ul>
-  <% @quotes.each do |quote| %>
-    <li>
-      <%= quote.content %> - Votes: <%= quote.votes %>
-      <%= link_to '⬆️', upvote_quote_path(quote), method: :patch %>
-      <%= link_to '⬇️', downvote_quote_path(quote), method: :patch %>
-    </li>
-  <% end %>
-</ul>
+    <%= link_to '➕ Add New Quote', new_quote_path, class: "bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white font-bold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition duration-300" %>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        <% @quotes.each do |quote| %>
+        <div class="relative group">
+            <div class="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-xl shadow-xl transition transform hover:rotate-3 hover:scale-105 duration-300">
+                <p class="text-white text-lg font-semibold"><%= quote.content %></p>
+                <p class="text-gray-300 mt-2">🔥 Votes: <%= quote.votes %></p>
+
+                <div class="flex justify-between items-center mt-4">
+                    <!-- Upvote Button -->
+                    <%= button_to '⬆️ Upvote', upvote_quote_path(quote), method: :patch, remote: true, form: { data: { turbo: false } }, class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transform hover:scale-110 transition duration-300 shadow-md" %>
+
+                    <!-- Downvote Button -->
+                    <%= button_to '⬇️ Downvote', downvote_quote_path(quote), method: :patch, remote: true, form: { data: { turbo: false } }, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transform hover:scale-110 transition duration-300 shadow-md" %>
+                </div>
+
+
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

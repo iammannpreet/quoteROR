@@ -1,0 +1,12 @@
+<h1>Top Quotes</h1>
+<%= link_to 'Add New Quote', new_quote_path, class: 'btn' %>
+
+<ul>
+  <% @quotes.each do |quote| %>
+    <li>
+      <%= quote.content %> - Votes: <%= quote.votes %>
+      <%= link_to '⬆️', upvote_quote_path(quote), method: :patch %>
+      <%= link_to '⬇️', downvote_quote_path(quote), method: :patch %>
+    </li>
+  <% end %>
+</ul>
